@@ -1,40 +1,35 @@
 // Nombre saludo al usuario
-let nombreIngresado = prompt("Ingrese su nombre");
-
-while (nombreIngresado === "" || nombreIngresado === null) {
+do {
+    nombreIngresado = prompt("Ingrese su nombre");
     if (nombreIngresado === null) {
         alert("Cancelaste la operacion, asi no podemos continuar. Debes ingresar un nombre valido");
-    } else {
-        alert("Decinos tu nombre para una atencion personalizada!");
     }
-    nombreIngresado = prompt("Ingrese su nombre");
-}
+} while (nombreIngresado === "" || nombreIngresado === null);
+
 
 alert("Hola " + nombreIngresado + ". Bienvenido a la bodega");
 console.log(nombreIngresado);
 
 // Edad del usuario
-let edad = prompt("Ingrese su edad");
+let edad;
 
-if (edad === null) {
-    alert("Has cancelado la operación. Debes ingresar tu edad para continuar.");
-} else {
-    // controlar que no deje vacio el dato
-    while (isNaN(edad) || edad === "") {
+do {
+    edad = prompt("Ingrese su edad");
+    if (edad === null) {
+        alert("Debes ingresar tu edad para continuar.");
+    } else if (isNaN(edad) || edad === "") {
         alert("Por favor, ingrese su edad en números.");
-        edad = prompt("Ingrese su edad con números.");
     }
+} while (edad === null || isNaN(edad) || edad === "");
 
-    // Convertir la edad a número entero
-    edad = parseInt(edad);
-    // verificar edad y seguir con el codigo
-    if (edad < 18) {
-        alert("La venta de alcohol está prohibida a menores de 18 años.");
-    } else {
-        alert("Sos mayor, puedes adquirir nuestros productos.");
-    }
 
-    console.log(edad);
+// Convertir la edad a número entero
+edad = parseInt(edad);
+// verificar edad y seguir con el codigo
+if (edad < 18) {
+    alert("La venta de alcohol está prohibida a menores de 18 años.");
+} else {
+    alert("Sos mayor, puedes adquirir nuestros productos.");
 
     //secciones
     let opcion;
@@ -64,10 +59,11 @@ if (edad === null) {
                 break;
             case 0:
                 alert("Gracias por visitarnos!")
-                break;// vuelve al menu principal
+                break; // vuelve al menu principal
             default:
                 alert("Opcion no valida!");
         }
     } while (isNaN(opcion) || opcion < 1 || opcion > 4);
     console.log(opcion);
 }
+
